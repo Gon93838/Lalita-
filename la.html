@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Chat Interface</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #efe7dd;
+    }
+
+    .chat-box {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: url("https://cloud.githubusercontent.com/assets/398893/15136779/4e765036-1639-11e6-9201-67e728e86f39.jpg") repeat;
+      background-size: cover;
+    }
+
+    .header-bar {
+      display: flex;
+      align-items: center;
+      background: #075e54;
+      color: white;
+      padding: 10px;
+      position: sticky;
+      top: 0;
+    }
+
+    .back-button {
+      cursor: pointer;
+      margin-right: 10px;
+    }
+
+    .profile-pic {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+
+    .contact-info {
+      flex-grow: 1;
+    }
+
+    .status-text {
+      font-size: 12px;
+      color: lightgray;
+    }
+
+    .menu-icon {
+      cursor: pointer;
+    }
+
+    .message-box {
+      flex-grow: 1;
+      overflow-y: auto;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .message {
+      max-width: 70%;
+      padding: 8px;
+      margin: 5px;
+      border-radius: 10px;
+      word-wrap: break-word;
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out;
+    }
+
+    .user-message {
+      background: #dcf8c6;
+      align-self: flex-end;
+      text-align: right;
+    }
+
+    .girlfriend-message {
+      background: white;
+      align-self: flex-start;
+      text-align: left;
+    }
+
+    .message.show {
+      opacity: 1;
+    }
+
+    .quoted-message {
+      background-color: #f0f0f0;
+      border-left: 3px solid #25D366;
+      padding: 5px;
+      margin: 5px 0;
+      border-radius: 10px;
+      font-size: 14px;
+    }
+
+    .typing-indicator {
+      display: flex;
+      gap: 3px;
+      align-self: flex-start;
+      padding: 5px;
+    }
+
+    .typing-dot {
+      width: 6px;
+      height: 6px;
+      background: gray;
+      border-radius: 50%;
+      animation: typing 1.3s infinite;
+    }
+
+    .typing-dot:nth-child(2) {
+      animation-delay: 0.3s;
+    }
+
+    .typing-dot:nth-child(3) {
+      animation-delay: 0.6s;
+    }
+
+    @keyframes typing {
+      0% { opacity: 0.5; transform: translateY(0); }
+      50% { opacity: 1; transform: translateY(-4px); }
+      100% { opacity: 0.5; transform: translateY(0); }
+    }
+
+    .input-area {
+      display: flex;
+      align-items: center;
+      background: white;
+      padding: 10px;
+    }
+
+    #messageInput {
+      flex-grow: 1;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 20px;
+      outline: none;
+    }
+
+    .send-icon {
+      cursor: pointer;
+      color: #075e54;
+      margin-left: 10px;
+    }
+
+    .material-icons {
+      padding: 7px;
+    }
+
+    .message::after {
+      content: attr(data-time) "\2003\2714\2714";
+      display: block;
+      font-size: 10px;
+      text-align: right;
+      margin-top: 5px;
+      color: gray;
+    }
+
+    #youtubeContainer {
+      display: none;
+      padding: 10px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="chat-box">
+    <!-- Chat Header -->
+    <div class="header-bar">
+      <span class="material-icons back-button">arrow_back</span>
+      <img src="https://dl.dropbox.com/scl/fi/2becduqibkn3vd9nqaqin/7f1126e6-22b3-4714-a7aa-d6b5a5736f7a.jpeg?rlkey=wlqan2hu2ej6silpfvq7j9erg&st=3abokvy1&dl=1" class="profile-pic" alt="Profile">
+      <div class="contact-info">
+        <strong>Lalita</strong>
+        <div class="status-text" id="onlineStatus">Online</div>
+      </div>
+      <span class="material-icons">call</span>
+      <span class="material-icons">videocam</span>
+      <span class="material-icons menu-icon">more_vert</span>
+    </div>
+
+    <!-- Chat Messages -->
+    <div class="message-box" id="messageArea">
+      <div class="message girlfriend-message show">Hello!</div>
+    </div>
+
+    <!-- Chat Input -->
+    <div class="input-area">
+      <input type="text" placeholder="Type a message..." id="messageInput">
+      <span class="material-icons send-icon" id="sendButton">send</span>
+    </div>
+
+    <!-- YouTube Video -->
+    <div id="youtubeContainer">
+      <iframe id="youtubeFrame" width="336" height="189" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <!-- Working Script Links (replace with your actual JS files) -->
+  <script src="dom.js"></script>
+  <script src="Gemini.js"></script>
+  <script src="la.js"></script>
+  <script src="Argus.js"></script>
+</body>
+</html>
